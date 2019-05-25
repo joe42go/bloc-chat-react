@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class RoomList extends Component {
     constructor(props) {
@@ -21,11 +20,12 @@ class RoomList extends Component {
 
     render () {
         return (
-            {
-                this.state.rooms.map( (room, index) =>
-                <div>{room}</div>
-                )
-            }   
+            <div>test</div>
+            /*{
+            this.state.rooms.map( (room, index) =>
+            <div>test</div>
+            )
+        }*/
         );
     }
 }

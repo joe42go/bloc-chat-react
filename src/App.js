@@ -4,7 +4,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 
-<script src="https://www.gstatic.com/firebasejs/6.0.3/firebase-app.js"></script>
+//src="https://www.gstatic.com/firebasejs/6.0.3/firebase-app.js"
 
 var firebaseConfig = {
     apiKey: "AIzaSyAifkcLWNWHk81t8ZddkfCmevkCZN9NppE",
@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <RoomList /> 
+    <RoomList />
   );
 }
 
