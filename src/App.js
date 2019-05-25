@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <RoomList />
+    <RoomList firebase={firebase} />
   );
 }
 
