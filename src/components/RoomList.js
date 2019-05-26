@@ -11,7 +11,7 @@ class RoomList extends Component {
     }
 
     componentDidMount() {
-        this.roomsRef.on('child_added', snapshot => {
+        this.roomsRef.on('child_added', snapshot => {  //rooms = {"1": {"name": "Blue"}, "2": {"name:"Red"},....}
             const room = snapshot.val();
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat (room) })
@@ -23,7 +23,7 @@ class RoomList extends Component {
             <section>
                 {
                     this.state.rooms.map( (room, index) =>
-                        <div>{room}</div>
+                        <div>{room.name}</div>
                     )
                 }
             </section>
