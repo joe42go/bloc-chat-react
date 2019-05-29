@@ -8,12 +8,12 @@ class RoomList extends Component {
             newRoom: ''
         };
 
-        this.roomsRef = this.props.firebase.database().ref('rooms');
+        this.roomsRef = this.props.firebase.database().ref('rooms'); // create object reference
     }
 
     componentDidMount() {
-        this.roomsRef.on('child_added', snapshot => {  //rooms = {"1": {"name": "Blue"}, "2": {"name:"Red"},....}
-            const room = snapshot.val();
+        this.roomsRef.on('child_added', snapshot => {  // rooms = {"1": {"name": "Blue"}, "2": {"name:"Red"},....}; synchronizes object changes; 'child-addes' is an event type (controls when the callback function is called) and snapshot is the callback function
+            const room = snapshot.val(); //data 'snapshot' isn't just data hence the reason why we are calling val ()
             room.key = snapshot.key;
             this.setState({ rooms: this.state.rooms.concat (room) })
         });
@@ -24,9 +24,11 @@ class RoomList extends Component {
     }
 
     createRoom(e) {
+         e.preventDefault();
         this.roomsRef.push({
             name: this.state.newRoom
         });
+        this.setState({newRoom: ''});
     }
 
     render () {
@@ -34,13 +36,13 @@ class RoomList extends Component {
             <section>
                 {
                     this.state.rooms.map( (room, index) =>
-                        <div>{room.name}</div>
+                        <div key={index}>{room.name}</div>
                     )
                 }
 
                 <form onSubmit= { (e) => this.createRoom(e) }>
                     <input type="text" value={ this.state.newRoom } onChange= { (e) => this.handleChange(e) } />
-                    <input type="submit" />
+                    <input type="submit" value="Create New Room"/>
                 </form>
 
 
