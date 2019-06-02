@@ -2,6 +2,9 @@ import React from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
+import MessageList from './components/MessageList';
+import { Container, Row, Col } from 'react-bootstrap';
+
 
 //src="https://www.gstatic.com/firebasejs/6.0.3/firebase-app.js"
 
@@ -18,7 +21,14 @@ firebase.initializeApp(firebaseConfig);
 
 function App() {
   return (
-    <RoomList firebase={firebase} />
+    <div>
+        <Container>
+            <Row>
+                <Col sm={2}><RoomList firebase={firebase} /></Col>
+                <Col sm={8}><MessageList firebase={firebase} /></Col>
+            </Row>
+        </Container>
+    </div>
   );
 }
 
