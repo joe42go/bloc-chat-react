@@ -24,12 +24,12 @@ class MessageList extends Component {
         return (
             <section>
                 <div>
-                    <h1></h1> //whichever room is clicked 
+                    <h1>{this.props.activeRoom}</h1> 
                     {
                         this.state.messages.map ( (message, index) =>
                             <div id="message" key={index}>
                                 <Card>
-                                    <Card.Header>{message.username }</Card.Header>
+                                    <Card.Header>{message.username}</Card.Header>
                                     <Card.Body>
                                         <Card.Text>{message.content}</Card.Text>
                                     </Card.Body>
