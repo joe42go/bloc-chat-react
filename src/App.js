@@ -29,7 +29,7 @@ class App extends Component {
             activeRoom: ''
         };
 
-        this.setActiveRoom=this.setActiveRoom.bind(this);
+        //this.setActiveRoom=this.setActiveRoom.bind(this);
 
     }
 
