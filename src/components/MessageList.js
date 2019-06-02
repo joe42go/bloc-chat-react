@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Card } from 'react-bootstrap';
-import RoomList from './RoomList';
 
 class MessageList extends Component {
     constructor(props) {
@@ -24,7 +23,7 @@ class MessageList extends Component {
         return (
             <section>
                 <div>
-                    <h1>{this.props.activeRoom}</h1> 
+                    <h1>{this.props.activeRoom}</h1>
                     {
                         this.state.messages.map ( (message, index) =>
                             <div id="message" key={index}>

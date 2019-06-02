@@ -1,4 +1,5 @@
 import React from 'react';
+import {Component} from 'react';
 import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
@@ -19,17 +20,36 @@ var firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-function App() {
-  return (
-    <div>
-        <Container>
-            <Row>
-                <Col sm={2}><RoomList firebase={firebase} /></Col>
-                <Col sm={8}><MessageList firebase={firebase} /></Col>
-            </Row>
-        </Container>
-    </div>
-  );
+
+
+class App extends Component {
+    constructor() {
+        super();
+        this.state = {
+            activeRoom: ''
+        };
+
+        this.setActiveRoom=this.setActiveRoom.bind(this);
+
+    }
+
+    setActiveRoom(roomId) {
+        this.setState({activeRoom: roomId});
+    }
+
+    render () {
+        return (
+            <div>
+                <Container>
+                    <Row>
+                        <Col sm={2}><RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} /></Col>
+                        <Col sm={8}><MessageList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} /></Col>
+                    </Row>
+                </Container>
+            </div>
+        )
+    }
 }
+
 
 export default App;
