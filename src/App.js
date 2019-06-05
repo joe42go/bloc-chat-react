@@ -4,6 +4,7 @@ import './App.css';
 import * as firebase from 'firebase';
 import RoomList from './components/RoomList';
 import MessageList from './components/MessageList';
+import User from './components/User';
 import { Container, Row, Col } from 'react-bootstrap';
 
 
@@ -26,15 +27,17 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            activeRoom: ''
+            activeRoom: '',
+            user: ''
         };
-
-        //this.setActiveRoom=this.setActiveRoom.bind(this);
-
     }
 
-    setActiveRoom(roomId) {
+    setActiveRoom = (roomId) => {
         this.setState({activeRoom: roomId});
+    }
+
+    setUser = (userName) => {
+        this.setState({user: userName});
     }
 
     render () {
@@ -42,8 +45,8 @@ class App extends Component {
             <div>
                 <Container>
                     <Row>
-                        <Col sm={2}><RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} /></Col>
-                        <Col sm={8}><MessageList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom.bind(this)} /></Col>
+                        <Col sm={2}><RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom} /><User firebase={firebase} setUser={this.setUser} /></Col>
+                        <Col sm={8}><MessageList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom} /></Col>
                     </Row>
                 </Container>
             </div>
