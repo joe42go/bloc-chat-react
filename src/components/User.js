@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import * as firebase from 'firebase';
+import 'firebase/auth';
+import { Button, InputGroup, FormControl } from 'react-bootstrap';
 
 class User extends Component {
     constructor(props) {
@@ -28,11 +30,11 @@ class User extends Component {
     render () {
         return (
             <section>
-                <p></p>
+                <br />
                     <Button variant="outline-primary" onClick={this.handleSignIn}>Sign In</Button>
-                <p></p>
+                <br />
                     <Button variant="outline-secondary" onClick={this.handleSignOut}>Sign Out</Button>
-                <p></p>
+                <br />
                     Username: {this.props.user? this.props.user.displayName:'Guest'}
             </section>
         );

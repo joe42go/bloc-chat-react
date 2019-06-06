@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { Card } from 'react-bootstrap';
+import * as firebase from 'firebase';
+import { Card, InputGroup, FormControl } from 'react-bootstrap';
 
 class MessageList extends Component {
     constructor(props) {
         super(props);
         this.state = {
             messages: [],
+            newMessage: {
+                username: this.props.user,
+                content: '',
+                sentAt: firebase.database.ServerValue.TIMESTAM,
+                roomId: this.props.user
+            }
         };
 
         this.messagesRef = this.props.firebase.database().ref('Messages'); // {'Message1': {content: 'Hello', roomId:'Red'}}
@@ -18,6 +25,23 @@ class MessageList extends Component {
             this.setState({ messages: this.state.messages.concat (message) })
         });
     }
+
+    /*createMessage(e) {
+         e.preventDefault();
+        this.messageRef.push({
+            newMessage: {
+                username: this.props.user,
+                content: this.state.newMessage.content,
+                sentAt: firebase.database.ServerValue.TIMESTAMP,
+                roomId: this.props.user
+            }
+        });
+        this.setState({newMessage.content: ''});
+    }*/
+
+    /*handleNewMessage(e) {
+        this.setState({ this.newMessage.content: e.target.value })
+    }*/
 
     render () {
         return (
@@ -38,6 +62,13 @@ class MessageList extends Component {
                         )
                     }
                 </div>
+                <br />
+                <InputGroup size="sm" className="mb-3" >
+                    <InputGroup.Prepend>
+                        <InputGroup.Text id="inputGroup-sizing-sm" onClick= { (e) => this.createMessage(e)}>Send</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Write your message here..." onChange= { (e) => this.handleNewMessage(e) }/>
+                </InputGroup>
             </section>
         );
     }
