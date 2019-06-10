@@ -46,7 +46,7 @@ class App extends Component {
                 <Container>
                     <Row>
                         <Col sm={2}><RoomList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom} /><User firebase={firebase} setUser={this.setUser} user={this.state.user} /></Col>
-                        <Col sm={8}><MessageList firebase={firebase} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom} /></Col>
+                        <Col sm={8}><MessageList firebase={firebase} user={this.state.user} activeRoom={this.state.activeRoom} setActiveRoom={this.setActiveRoom} /></Col>
                     </Row>
                 </Container>
             </div>
